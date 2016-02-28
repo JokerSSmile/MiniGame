@@ -11,8 +11,8 @@ import ru.patrushevoleg.minigame.states.MenuState;
 
 public class MyGame extends ApplicationAdapter {
 
-	public static final int WIDTH = 480;
-	public static final int HEIGHT = 800;
+	public static final int WIDTH = 486;
+	public static final int HEIGHT = 864;
 
 	public static final String TITLE = "my game";
 
@@ -24,7 +24,9 @@ public class MyGame extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		gsm = new GameStateManager();
 
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl20.glEnable(GL20.GL_BLEND);
+		Gdx.gl20.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
 		gsm.push(new MenuState(gsm));
 	}

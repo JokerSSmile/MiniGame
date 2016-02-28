@@ -1,45 +1,60 @@
 package ru.patrushevoleg.minigame.entities;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
+
+import ru.patrushevoleg.minigame.MyGame;
 
 public class PlayerBox {
 
-    private static final int FORWARD_SPEED = 150;
-    private static final int SPEED = 200;
+    private static final float FORWARD_SPEED = 350f;
+    private static final float SIDE_SPEED = 500f;
     private static final Vector2 SIZE = new Vector2(70, 70);
-    private static final int ZERO_SPEED_SHIFT = 5;
+    private static final int ZERO_SPEED_SHIFT = 7;
 
     private Vector2 position;
-
     private Vector2 speed;
     private Vector2 size;
+    private Rectangle bounds;
+    private float acceleration;
 
     public PlayerBox(int x, int y){
         position = new Vector2(x, y);
-        speed = new Vector2(0, 150);
+        speed = new Vector2(0, FORWARD_SPEED);
         size = new Vector2(SIZE);
+        bounds = new Rectangle(x, y, SIZE.x, SIZE.y);
+        acceleration = 0;
     }
 
     public void update(float dt){
+        acceleration += dt;
+        speed.y += acceleration / 1000;
         position.add(speed.x * dt, speed.y * dt);
-        //System.out.println(speed.y);
+
+        bounds.setPosition(position.x, position.y);
     }
 
-    public void move(int x){
-        int centerX = (int)(position.x + size.x / 2);
-        if (x > centerX - ZERO_SPEED_SHIFT && x < centerX + ZERO_SPEED_SHIFT) {
+    public void move(Vector3 mousePos){
+        float centerX = position.x + size.x / 2;
+        if (mousePos.x > centerX - ZERO_SPEED_SHIFT && mousePos.x < centerX + ZERO_SPEED_SHIFT) {
             speed.x = 0;
         }
-        else if (x > centerX){
-            speed.x = SPEED;
+        else if (mousePos.x > centerX){
+            speed.x = SIDE_SPEED;
         }
-        else if (x < centerX){
-            speed.x = -SPEED;
+        else if (mousePos.x < centerX){
+            speed.x = -SIDE_SPEED;
         }
     }
 
     public void notMove(){
         speed.x = 0;
+    }
+
+    public Rectangle getBounds(){
+        return bounds;
     }
 
     public Vector2 getPosition() {
@@ -48,5 +63,9 @@ public class PlayerBox {
 
     public Vector2 getSize() {
         return size;
+    }
+
+    public void dispose(){
+
     }
 }
