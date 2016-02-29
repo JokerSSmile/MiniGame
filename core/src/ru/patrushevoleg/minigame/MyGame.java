@@ -25,8 +25,6 @@ public class MyGame extends ApplicationAdapter {
 		gsm = new GameStateManager();
 
 		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl20.glEnable(GL20.GL_BLEND);
-		Gdx.gl20.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
 		gsm.push(new MenuState(gsm));
 	}
@@ -42,6 +40,7 @@ public class MyGame extends ApplicationAdapter {
 	@Override
 	public void dispose() {
 		super.dispose();
-
+		batch.dispose();
+		gsm.dispose();
 	}
 }

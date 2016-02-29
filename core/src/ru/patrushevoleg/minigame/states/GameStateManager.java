@@ -33,4 +33,8 @@ public class GameStateManager {
     public void render(SpriteBatch batch){
         states.peek().render(batch);
     }
+
+    public void dispose(){
+        states.clear();
+    }
 }

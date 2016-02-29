@@ -10,15 +10,15 @@ import com.badlogic.gdx.math.Vector3;
 import ru.patrushevoleg.minigame.MyGame;
 import ru.patrushevoleg.minigame.handlers.ButtonHandler;
 
-public class MenuState extends State {
+public class EndGame extends State {
 
     private static final Vector2 screenCenter = new Vector2(MyGame.WIDTH / 2, MyGame.HEIGHT / 2);
-    private static final Rectangle playButtonBounds = new Rectangle(screenCenter.x - 40, screenCenter.y - 50, 90, 100);
+    //private static final Rectangle playButtonBounds = new Rectangle(screenCenter.x - 40, screenCenter.y - 50, 90, 100);
 
     private ShapeRenderer shapeRenderer;
     private ButtonHandler handler;
 
-    public MenuState(GameStateManager gsm){
+    public EndGame(GameStateManager gsm){
         super(gsm);
         shapeRenderer = new ShapeRenderer();
         handler = new ButtonHandler();
@@ -30,15 +30,7 @@ public class MenuState extends State {
     @Override
     public void inputHandle() {
         mousePosition = viewport.unproject(mousePosition);
-        if (Gdx.input.isTouched() && playButtonBounds.contains(mousePosition.x, mousePosition.y)) {
-            handler.onClick();
-        }
-        else if (!Gdx.input.isTouched() && playButtonBounds.contains(mousePosition.x, mousePosition.y)){
-            handler.onRelease(gsm);
-        }
-        else{
-            handler.notTouched();
-        }
+
     }
 
     @Override

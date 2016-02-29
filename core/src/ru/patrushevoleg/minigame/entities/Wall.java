@@ -19,28 +19,28 @@ public class Wall {
 
     public Wall(int y){
         rand = new Random();
-        position = new Vector2(setPosition(y));
-        size = new Vector2(setSize());
-        bounds = new Rectangle(setBounds());
+        position = new Vector2(definePosition(y));
+        size = new Vector2(defineSize());
+        bounds = new Rectangle(defineBounds());
         bounds.setPosition(position.x, position.y);
     }
 
-    public Vector2 setPosition(int y){
+    public Vector2 definePosition(int y){
         return position = new Vector2(rand.nextInt(MyGame.WIDTH) - MIN_WIDTH / 2, y);
     }
 
-    public Vector2 setSize(){
+    public Vector2 defineSize(){
         return size = new Vector2(rand.nextInt(MAX_WIDTH) + MIN_WIDTH, 30);
     }
 
-    public Rectangle setBounds(){
+    private Rectangle defineBounds(){
         return bounds = new Rectangle(position.x, position.y , size.x, size.y);
     }
 
     public void reposition(int y){
-        setPosition(y);
-        setSize();
-        setBounds();
+        definePosition(y);
+        defineSize();
+        defineBounds();
         bounds.setPosition(position.x, position.y);
     }
 
