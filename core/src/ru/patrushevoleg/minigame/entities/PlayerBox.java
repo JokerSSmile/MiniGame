@@ -1,36 +1,53 @@
 package ru.patrushevoleg.minigame.entities;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
-public class PlayerBox {
+import java.util.Random;
+
+public class PlayerBox extends Entity{
 
     private static final float FORWARD_SPEED = 600f;
-    private static final float SIDE_SPEED = 500f;
     private static final Vector2 SIZE = new Vector2(70, 70);
-    private static final int ZERO_SPEED_SHIFT = 7;
+    private static final int ZERO_SPEED_SHIFT = 10;
 
-    private Vector2 position;
-    private Vector2 speed;
-    private Vector2 size;
     private Rectangle bounds;
     private float acceleration;
+    private Random rand;
+    private Vector2 SCREEN_SIZE;
+    private float timer;
 
-    public PlayerBox(Vector2 startPosition){
+    private Color color = new Color(1, 1, 1, 1);
+
+    public PlayerBox(Vector2 startPosition, Vector2 SCREEN_SIZE){
         position = new Vector2(startPosition.x, startPosition.y);
         speed = new Vector2(0, FORWARD_SPEED);
         size = new Vector2(SIZE);
         bounds = new Rectangle(startPosition.x, startPosition.y, SIZE.x, SIZE.y);
         acceleration = 0;
+        rand = new Random();
+        this.SCREEN_SIZE = SCREEN_SIZE;
     }
 
     public void update(float dt){
         acceleration += dt;
         speed.y += acceleration / 1000;
         position.add(speed.x * dt, speed.y * dt);
-
         bounds.setPosition(position.x, position.y);
+
+        timer += dt;
+        if (timer >= 0.44){
+            color = new Color(rand.nextFloat() * 1 + 0.2f,  rand.nextFloat() * 1 + 0.2f, rand.nextFloat() * 1 + 0.2f, 1);
+            timer = 0;
+        }
+    }
+
+    public void render(ShapeRenderer shapeRenderer){
+        shapeRenderer.rect(position.x + (SIZE.x - size.x) / 2, position.y + (SIZE.y - size.y) / 2, size.x, size.y,
+                color, color, color, color);
     }
 
     public void move(Vector3 mousePos){
@@ -39,10 +56,18 @@ public class PlayerBox {
             speed.x = 0;
         }
         else if (mousePos.x > centerX){
-            speed.x = SIDE_SPEED + (Math.abs(mousePos.x - centerX) * 3);
+            speed.x = (Math.abs(mousePos.x - centerX) * 10);
+
         }
         else if (mousePos.x < centerX){
-            speed.x = -SIDE_SPEED - (Math.abs(mousePos.x - centerX) * 3);
+            speed.x = -(Math.abs(mousePos.x - centerX) * 10);
+        }
+
+        if (centerX < 0) {
+            position.x = 0 - size.x / 2;
+        }
+        else if  (centerX > SCREEN_SIZE.x){
+            position.x = SCREEN_SIZE.x - size.x / 2;
         }
     }
 
@@ -60,6 +85,10 @@ public class PlayerBox {
 
     public Vector2 getSize() {
         return size;
+    }
+
+    public Color getColor(){
+        return color;
     }
 
     public void dispose(){

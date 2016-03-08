@@ -1,15 +1,24 @@
 package ru.patrushevoleg.minigame.states;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
 import java.util.Stack;
 
 public class GameStateManager {
 
     private Stack<State> states;
+    public Music music;
+    public FreeTypeFontGenerator generator;
 
     public GameStateManager(){
         states = new Stack<State>();
+        music = Gdx.audio.newMusic(Gdx.files.internal("BigCarTheft.mp3"));
+        generator = new FreeTypeFontGenerator(Gdx.files.internal("manteka.ttf"));
+        music.setLooping(true);
     }
 
     public void push(State state){
@@ -26,6 +35,10 @@ public class GameStateManager {
         states.push(state);
     }
 
+    public void pause(){
+        states.peek().pause();
+    }
+
     public void update(float dt){
         states.peek().update(dt);
     }
@@ -36,5 +49,7 @@ public class GameStateManager {
 
     public void dispose(){
         states.clear();
+        music.dispose();
+        generator.dispose();
     }
 }

@@ -3,7 +3,6 @@ package ru.patrushevoleg.minigame;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import ru.patrushevoleg.minigame.states.GameStateManager;
@@ -25,8 +24,15 @@ public class MyGame extends ApplicationAdapter {
 		gsm = new GameStateManager();
 
 		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.input.setCatchBackKey(true);
 
 		gsm.push(new MenuState(gsm));
+	}
+
+	@Override
+	public void pause() {
+		gsm.pause();
+		super.pause();
 	}
 
 	@Override

@@ -7,13 +7,11 @@ import java.util.Random;
 
 import ru.patrushevoleg.minigame.MyGame;
 
-public class Wall {
+public class Wall extends Entity {
 
     private static final int MIN_WIDTH = MyGame.WIDTH / 4;
     private static final int MAX_WIDTH = MyGame.WIDTH / 2;
 
-    private Vector2 size;
-    private Vector2 position;
     private Random rand;
     private Rectangle bounds;
 
