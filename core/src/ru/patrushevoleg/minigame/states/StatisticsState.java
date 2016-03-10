@@ -35,11 +35,11 @@ public class StatisticsState extends State {
     private Sprite menuSprite;
     private Sprite resetSprite;
 
-    private Text bigText;
-    private Text normalText;
-    private Text smallText;
-    private Text yesText;
-    private Text noText;
+    private static Text bigText = new Text(70, true);;
+    private static Text normalText = new Text(45, true);;
+    private static Text smallText = new Text(30, true);;
+    private static Text yesText = new Text(45, true);;
+    private static Text noText = new Text(45, true);;
     private Preferences prefs;
 
     public CurrentState gameState = CurrentState.NORMAL;
@@ -53,13 +53,7 @@ public class StatisticsState extends State {
         resetHandler = new ButtonHandler();
         confirmResetHandler = new ButtonHandler();
         declineResetHandler = new ButtonHandler();
-
         SCREEN_SIZE = new Vector2(MyGame.WIDTH, MyGame.HEIGHT);
-        bigText = new Text(gsm.generator, 70, true);
-        normalText = new Text(gsm.generator, 45, true);
-        smallText = new Text(gsm.generator, 30, true);
-        yesText = new Text(gsm.generator, 45, true);
-        noText = new Text(gsm.generator, 45, true);
 
         Texture back = new Texture("home_white.png");
         menuSprite = new Sprite(back);

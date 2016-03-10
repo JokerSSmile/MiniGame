@@ -32,9 +32,9 @@ public class EndGameState extends State {
 
     private Sprite repeatSprite;
     private Sprite menuSprite;
-    private Text bigText;
-    private Text normalText;
-    private Text smallText;
+    private static Text bigText = new Text(100, false);;
+    private static Text normalText = new Text(60, false);;
+    private static Text smallText = new Text(30, false);;
     private Preferences prefs;
     private boolean isHighScore = false;
 
@@ -47,9 +47,6 @@ public class EndGameState extends State {
         menuHandler = new ButtonHandler();
 
         SCREEN_SIZE = new Vector2(MyGame.WIDTH, MyGame.HEIGHT);
-        bigText = new Text(gsm.generator, 100, false);
-        normalText = new Text(gsm.generator, 60, false);
-        smallText = new Text(gsm.generator, 30, false);
 
         Texture repeat = new Texture(REFRESH_TEXTURE_PATH);
         repeatSprite = new Sprite(repeat);

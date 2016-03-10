@@ -12,12 +12,10 @@ public class GameStateManager {
 
     private Stack<State> states;
     public Music music;
-    public FreeTypeFontGenerator generator;
 
     public GameStateManager(){
         states = new Stack<State>();
         music = Gdx.audio.newMusic(Gdx.files.internal("BigCarTheft.mp3"));
-        generator = new FreeTypeFontGenerator(Gdx.files.internal("manteka.ttf"));
         music.setLooping(true);
     }
 
@@ -50,6 +48,5 @@ public class GameStateManager {
     public void dispose(){
         states.clear();
         music.dispose();
-        generator.dispose();
     }
 }

@@ -1,5 +1,6 @@
 package ru.patrushevoleg.minigame.entities;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
@@ -15,12 +16,14 @@ public class Text {
     private GlyphLayout layout;
     private Rectangle bounds;
     private FreeTypeFontGenerator.FreeTypeFontParameter parameter;
+    private static FreeTypeFontGenerator generator;
 
-    public Text(FreeTypeFontGenerator generator, int fontSize, boolean isWhite){
+    public Text(int fontSize, boolean isWhite){
         font = new BitmapFont();
         layout = new GlyphLayout();
-
         parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+
+        generator = new FreeTypeFontGenerator(Gdx.files.internal("manteka.ttf"));
         parameter.size = fontSize;
         if (!isWhite){
             parameter.color = new Color(0, 0, 0, 1);

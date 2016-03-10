@@ -37,7 +37,7 @@ public class PlayState extends State {
     private ButtonHandler backHandler;
     private Rectangle pauseButtonBounds;
     private String scoreString;
-    private Text text;
+    private static Text text = new Text(57, true);;
     private Vector3 cameraPosition;
     private Preferences prefs;
     private float timer;
@@ -53,7 +53,6 @@ public class PlayState extends State {
         handler = new ButtonHandler();
         backHandler = new ButtonHandler();
         scoreString = "";
-        text = new Text(gsm.generator, 57, true);
         prefs = Gdx.app.getPreferences(PREFS_NAME);
 
         walls = new Vector<Wall>();
