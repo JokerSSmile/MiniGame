@@ -15,7 +15,7 @@ public class MyGame extends ApplicationAdapter {
 	public static final int WIDTH = 486;
 	public static final int HEIGHT = 864;
 
-	public static final String TITLE = "my game";
+	public static final String TITLE = "Blocks!";
 
 	private GameStateManager gsm;
 	private SpriteBatch batch;
@@ -26,7 +26,7 @@ public class MyGame extends ApplicationAdapter {
 		this.handler = handler;
 	}
 
-	public MyGame(){};
+	public MyGame(){}
 
 	@Override
 	public void create () {
@@ -41,14 +41,15 @@ public class MyGame extends ApplicationAdapter {
 	}
 
 	@Override
-	public void pause() {
+	 public void pause() {
+		System.out.println("game paused");
 		gsm.pause();
 		super.pause();
 	}
 
 	@Override
 	public void render () {
-
+		System.out.println("game render");
 		if (Gdx.app.getType() == Application.ApplicationType.Android) {
 			handler.showAds(toggle);
 		}
@@ -57,6 +58,7 @@ public class MyGame extends ApplicationAdapter {
 
 		gsm.update(Gdx.graphics.getDeltaTime());
 		gsm.render(batch);
+
 		toggle = !gsm.getStateName().equals("play");
 	}
 

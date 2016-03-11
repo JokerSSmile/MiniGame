@@ -22,7 +22,7 @@ import ru.patrushevoleg.minigame.handlers.ButtonHandler;
 
 public class EndGameState extends State {
 
-    private static final String PREFS_NAME = "myprefs";
+    private static final String PREFS_NAME = "ru.patrushevoleg.blocks";
     private static final String REFRESH_TEXTURE_PATH = "refresh.png";
     private static final String HOME_TEXTURE_PATH = "home.png";
 
@@ -59,7 +59,6 @@ public class EndGameState extends State {
         menuSprite.setPosition(-SCREEN_SIZE.x + 275, SCREEN_SIZE.y - 300);
 
         prefs = Gdx.app.getPreferences(PREFS_NAME);
-        prefs.putInteger("gamesplayed", prefs.getInteger("gamesplayed") + 1);
         if (prefs.getInteger("currentscore") > prefs.getInteger("highscore")) {
             prefs.putInteger("highscore", prefs.getInteger("currentscore"));
             prefs.flush();

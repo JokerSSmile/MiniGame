@@ -83,10 +83,6 @@ public class PlayerBox extends Entity{
         return position;
     }
 
-    public Vector2 getSize() {
-        return size;
-    }
-
     public Color getColor(){
         return color;
     }

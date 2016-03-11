@@ -84,6 +84,8 @@ public class MenuState extends State {
         }
         else if (!Gdx.input.isKeyPressed(Input.Keys.BACK)){
             if (backHandler.isOnRelease()) {
+                gsm.isOnExit = true;
+                this.dispose();
                 backHandler.onRelease();
             }
         }

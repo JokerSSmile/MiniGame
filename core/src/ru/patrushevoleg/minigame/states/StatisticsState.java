@@ -22,7 +22,7 @@ import ru.patrushevoleg.minigame.handlers.ButtonHandler;
 
 public class StatisticsState extends State {
 
-    private static final String PREFS_NAME = "myprefs";
+    private static final String PREFS_NAME = "ru.patrushevoleg.blocks";
 
     public enum CurrentState { NORMAL, CONFIRM_RESET }
 
@@ -35,11 +35,11 @@ public class StatisticsState extends State {
     private Sprite menuSprite;
     private Sprite resetSprite;
 
-    private static Text bigText = new Text(70, true);;
-    private static Text normalText = new Text(45, true);;
-    private static Text smallText = new Text(30, true);;
-    private static Text yesText = new Text(45, true);;
-    private static Text noText = new Text(45, true);;
+    private static Text bigText = new Text(70, true);
+    private static Text normalText = new Text(45, true);
+    private static Text smallText = new Text(30, true);
+    private static Text yesText = new Text(45, true);
+    private static Text noText = new Text(45, true);
     private Preferences prefs;
 
     public CurrentState gameState = CurrentState.NORMAL;
@@ -179,10 +179,10 @@ public class StatisticsState extends State {
         if (gameState == CurrentState.NORMAL) {
             resetSprite.draw(batch);
             normalText.draw(batch, "high score:", new Vector2(25, SCREEN_SIZE.y / 2 + 200));
-            smallText.draw(batch, prefs.getInteger("currentscore"), new Vector2(25, SCREEN_SIZE.y / 2 + 150));
+            smallText.draw(batch, prefs.getInteger("highscore"), new Vector2(25, SCREEN_SIZE.y / 2 + 150));
             normalText.draw(batch, "games played:", new Vector2(25, SCREEN_SIZE.y / 2 + 100));
             smallText.draw(batch, prefs.getInteger("gamesplayed"), new Vector2(25, SCREEN_SIZE.y / 2 + 50));
-            normalText.draw(batch, "Time played:", new Vector2(25, SCREEN_SIZE.y / 2));
+            normalText.draw(batch, "time played:", new Vector2(25, SCREEN_SIZE.y / 2));
             smallText.draw(batch, prefs.getInteger("timeplayed") + " sec", new Vector2(25, SCREEN_SIZE.y / 2 - 50));
         }
         else {

@@ -56,10 +56,11 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler{
 		});
 
 		adView.setAdSize(AdSize.SMART_BANNER);
-		adView.setAdUnitId("ca-app-pub-8927709740035785/6343860158");
+		adView.setAdUnitId("000000000000000000000");
 
 		AdRequest.Builder builder = new AdRequest.Builder();
 		builder.addTestDevice("F95AE5447ABFE28B149E20B6127ACD78");
+		builder.addTestDevice("57FCD265596F8C3ABBD284EC94BA715D");
 		RelativeLayout.LayoutParams adParams = new RelativeLayout.LayoutParams(
 				RelativeLayout.LayoutParams.WRAP_CONTENT,
 				RelativeLayout.LayoutParams.WRAP_CONTENT

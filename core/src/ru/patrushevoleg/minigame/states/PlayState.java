@@ -28,7 +28,7 @@ public class PlayState extends State {
     private static final Vector2 PAUSE_BTN_SHIFT_FROM_SCREEN_BORDERS = new Vector2(70, 70);
     private static final Vector2 PAUSE_BTN_SIZE = new Vector2(20, 50);
     private static final int SHIFT_BEETVEN_PAUSE_RECTS = 30;
-    private static final String PREFS_NAME = "myprefs";
+    private static final String PREFS_NAME = "ru.patrushevoleg.blocks";
 
     public enum CurrentState { RUNNING, PAUSED }
     private PlayerBox playerBox;
@@ -37,7 +37,7 @@ public class PlayState extends State {
     private ButtonHandler backHandler;
     private Rectangle pauseButtonBounds;
     private String scoreString;
-    private static Text text = new Text(57, true);;
+    private static Text text = new Text(57, true);
     private Vector3 cameraPosition;
     private Preferences prefs;
     private float timer;
@@ -134,6 +134,7 @@ public class PlayState extends State {
                     if (wall.isCollides(playerBox.getBounds())) {
                         prefs.putInteger("currentscore", (int)playerBox.getPosition().y);
                         prefs.putInteger("timeplayed", (int)timer + prefs.getInteger("timeplayed"));
+                        prefs.putInteger("gamesplayed", prefs.getInteger("gamesplayed") + 1);
                         prefs.flush();
                         gsm.set(new TransitionState(gsm, false, new EndGameState(gsm)));
                         this.dispose();
