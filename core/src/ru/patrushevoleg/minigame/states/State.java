@@ -17,7 +17,7 @@ import ru.patrushevoleg.minigame.entities.Particle;
 
 public abstract class State implements Screen {
 
-    public String name;
+    public static String name;
 
     protected Vector2 SCREEN_SIZE;
     protected OrthographicCamera camera;

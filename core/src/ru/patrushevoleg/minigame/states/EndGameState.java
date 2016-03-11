@@ -32,9 +32,9 @@ public class EndGameState extends State {
 
     private Sprite repeatSprite;
     private Sprite menuSprite;
-    private static Text bigText = new Text(100, false);;
-    private static Text normalText = new Text(60, false);;
-    private static Text smallText = new Text(30, false);;
+    private static Text bigText = new Text(100, false);
+    private static Text normalText = new Text(60, false);
+    private static Text smallText = new Text(30, false);
     private Preferences prefs;
     private boolean isHighScore = false;
 

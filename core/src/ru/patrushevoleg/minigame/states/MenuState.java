@@ -141,6 +141,8 @@ public class MenuState extends State {
                 PLAY_BTN_COLOR, PLAY_BTN_COLOR, PLAY_BTN_COLOR
         );
         shapeRenderer.end();
+
+
     }
 
     @Override

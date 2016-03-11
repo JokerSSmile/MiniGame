@@ -49,7 +49,6 @@ public class TransitionState extends State{
                     gsm.music.setVolume(gsm.music.getVolume() - dt);
                 }
             } else {
-                System.out.println("");
                 gsm.set(state);
             }
         }
