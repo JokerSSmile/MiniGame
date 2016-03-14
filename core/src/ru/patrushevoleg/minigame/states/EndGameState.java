@@ -26,6 +26,7 @@ public class EndGameState extends State {
     private static final String REFRESH_TEXTURE_PATH = "refresh.png";
     private static final String HOME_TEXTURE_PATH = "home.png";
 
+
     private ButtonHandler repeatHandler;
     private ButtonHandler backHandler;
     private ButtonHandler menuHandler;

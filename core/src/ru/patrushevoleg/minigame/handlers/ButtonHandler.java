@@ -1,9 +1,7 @@
 package ru.patrushevoleg.minigame.handlers;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 
-import ru.patrushevoleg.minigame.MyGame;
 import ru.patrushevoleg.minigame.states.GameStateManager;
 import ru.patrushevoleg.minigame.states.PlayState;
 import ru.patrushevoleg.minigame.states.State;
@@ -29,7 +27,7 @@ public class ButtonHandler {
 
     public void onRelease(){
         if (isTouched) {
-            Gdx.app.exit();
+
         }
         isTouched = false;
     }

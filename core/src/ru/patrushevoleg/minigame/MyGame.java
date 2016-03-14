@@ -45,27 +45,42 @@ public class MyGame extends ApplicationAdapter {
 		System.out.println("game paused");
 		gsm.pause();
 		super.pause();
+
+		if (gsm.isOnExit){
+			System.out.println("game dispose from pause");
+			this.dispose();
+			System.out.println("end if state");
+			Gdx.app.exit();
+			System.exit(0);
+		}
 	}
 
 	@Override
 	public void render () {
-		System.out.println("game render");
 		if (Gdx.app.getType() == Application.ApplicationType.Android) {
-			handler.showAds(toggle);
+			//handler.showAds(toggle);
 		}
 
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		gsm.update(Gdx.graphics.getDeltaTime());
-		gsm.render(batch);
 
+		if (gsm.isOnExit){
+			System.out.println("game dispose from render");
+			pause();
+		}
+		else{
+			gsm.render(batch);
+		}
 		toggle = !gsm.getStateName().equals("play");
 	}
 
 	@Override
 	public void dispose() {
+		System.out.println("game dispose from dispose st");
 		super.dispose();
-		batch.dispose();
 		gsm.dispose();
+		batch.dispose();
+		System.out.println("game dispose from dispose end");
 	}
 }

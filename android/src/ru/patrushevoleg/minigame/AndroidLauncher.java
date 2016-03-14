@@ -51,16 +51,15 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler{
 			public void onAdLoaded() {
 				int visability = adView.getVisibility();
 				adView.setVisibility(AdView.GONE);
-				adView.setVisibility(visability);
 			}
 		});
 
 		adView.setAdSize(AdSize.SMART_BANNER);
-		adView.setAdUnitId("000000000000000000000");
+		adView.setAdUnitId("");
 
 		AdRequest.Builder builder = new AdRequest.Builder();
-		builder.addTestDevice("F95AE5447ABFE28B149E20B6127ACD78");
-		builder.addTestDevice("57FCD265596F8C3ABBD284EC94BA715D");
+		builder.addTestDevice("");
+		builder.addTestDevice("");
 		RelativeLayout.LayoutParams adParams = new RelativeLayout.LayoutParams(
 				RelativeLayout.LayoutParams.WRAP_CONTENT,
 				RelativeLayout.LayoutParams.WRAP_CONTENT

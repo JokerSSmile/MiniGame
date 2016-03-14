@@ -9,16 +9,15 @@ import java.util.Stack;
 public class GameStateManager {
 
     private Stack<State> states;
-    private static String stateName;
+    private String stateName;
     public Music music;
-    public boolean isOnExit;
+    public static boolean isOnExit = false;
 
     public GameStateManager(){
         states = new Stack<State>();
         music = Gdx.audio.newMusic(Gdx.files.internal("BigCarTheft.mp3"));
         music.setLooping(true);
         stateName = new String("");
-        isOnExit = false;
     }
 
     public void push(State state){
@@ -26,7 +25,6 @@ public class GameStateManager {
     }
 
     public void pop() {
-        states.pop().dispose();
         stateName = states.peek().name;
     }
 
@@ -37,13 +35,10 @@ public class GameStateManager {
     }
 
     public void pause(){
-        if (states.size() > 0) {
-            states.peek().pause();
-        }
+        states.peek().pause();
     }
 
     public void update(float dt){
-        System.out.println(states.size());
         states.peek().update(dt);
     }
 
@@ -56,6 +51,7 @@ public class GameStateManager {
     }
 
     public void dispose(){
+        System.out.println("gsm dispose");
         states.clear();
         music.dispose();
     }

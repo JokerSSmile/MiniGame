@@ -117,8 +117,8 @@ public class MenuState extends State {
     @Override
     public void render(SpriteBatch batch) {
 
-        Gdx.gl.glClearColor(1, 1, 1, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl20.glClearColor(1, 1, 1, 1);
+        Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
@@ -143,8 +143,6 @@ public class MenuState extends State {
                 PLAY_BTN_COLOR, PLAY_BTN_COLOR, PLAY_BTN_COLOR
         );
         shapeRenderer.end();
-
-
     }
 
     @Override
@@ -179,7 +177,9 @@ public class MenuState extends State {
 
     @Override
     public void dispose() {
+        System.out.println("menu disposed start");
         shapeRenderer.dispose();
         particles.clear();
+        System.out.println("menu disposed end");
     }
 }
